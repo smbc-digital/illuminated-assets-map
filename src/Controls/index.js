@@ -1,5 +1,6 @@
 import { os_open, greyscale, streetLayer } from '../Tiles'
 import Leaflet from 'leaflet'
+import fetch from 'cross-fetch'
 
 const AddLayerControlsLayers = MapConfig => {
   const controlLayers = {}
