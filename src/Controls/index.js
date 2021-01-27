@@ -1,6 +1,5 @@
 import { os_open, greyscale, streetLayer } from '../Tiles'
 import Leaflet from 'leaflet'
-import fetch from 'cross-fetch'
 
 const AddLayerControlsLayers = MapConfig => {
   const controlLayers = {}
@@ -9,11 +8,11 @@ const AddLayerControlsLayers = MapConfig => {
     controlLayers['Ordnance survey'] = os_open
 
     if (MapConfig.DisplayGrayScale) {
-      controlLayers['Grayscale'] = greyscale
+      controlLayers['Open Street Map'] = streetLayer
     }
 
     if (MapConfig.DisplayStreets) {
-      controlLayers['Streets'] = streetLayer
+      controlLayers['Open Street Map Greyscale'] = greyscale
     }
   }
 

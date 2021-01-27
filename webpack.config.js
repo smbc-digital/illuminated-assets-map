@@ -23,7 +23,8 @@ let config = {
                     path.resolve(__dirname, 'node_modules/leaflet-search/dist'),
                     path.resolve(__dirname, 'node_modules/leaflet/dist'),
                     path.resolve(__dirname, 'node_modules/mapbox-gl/dist'),
-                    path.resolve(__dirname, 'node_modules/font-awesome/css')
+                    path.resolve(__dirname, 'node_modules/font-awesome/css'),
+                    path.resolve(__dirname, 'node_modules/leaflet.locatecontrol/dist')
                 ]
             },
             {
