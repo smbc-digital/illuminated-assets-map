@@ -1,6 +1,6 @@
 import Leaflet from 'leaflet'
-import { streetLightingPopup} from './Popups' //devsitesPopup, notdevsitesPopup}
-import { streetlightingStyle} from './Styles'
+import { streetLightingPopup,illuminatedsignsPopup,illuminatedbollardsPopup} from './Popups' //devsitesPopup, notdevsitesPopup}
+import { jobstatusStyle} from './Styles'
 
 const Configuration = {
     Map: {
@@ -15,18 +15,37 @@ const Configuration = {
     },
     DynamicData: 
     [
-        //{
-          //  key: 'Tree Preservation Orders',
-            //url: 'https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=trees:tpo_merged&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326',
-            //layerOptions: {
-            //    onEachFeature: tpoPopup,
-            //    maxZoom: 2,
-            //    style: tpoStyle
-            //},
-            //displayOverlay: true,
-            //visibleByDefault: true
-        //},
+        
+        {
+            key: 'Illuminated Signs',
+            url:
+              'https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=highway_assets:illuminated_sign_reporting&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326',
+            layerOptions: {
+              onEachFeature: illuminatedsignsPopup,
+              maxZoom: 16,
+              pointToLayer: (feature, latlng) => {
+                return Leaflet.circleMarker (latlng, jobstatusStyle (feature))
+              }
+            },
+            displayOverlay: true,
+            visibleByDefault: true
+        },
+        
+        {
+            key: 'Illuminated Bollards',
+            url: 'https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=highway_assets:illuminated_bollard_reporting&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326',
+            layerOptions: {
+                maxZoom: 16,
+                onEachFeature: illuminatedbollardsPopup,
+                pointToLayer: (feature, latlng) => {
+                    return Leaflet.circleMarker (latlng, jobstatusStyle (feature))
 
+                }
+            },
+            displayOverlay: true,
+            visibleByDefault: true
+        },
+        
         {
             key: 'Street Lights',
             url: 'https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=highway_assets:street_lights_reporting&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326',
@@ -34,7 +53,7 @@ const Configuration = {
                 maxZoom: 16,
                 onEachFeature: streetLightingPopup,
                 pointToLayer: (feature, latlng) => {
-                    return Leaflet.circleMarker (latlng, streetlightingStyle (feature))
+                    return Leaflet.circleMarker (latlng, jobstatusStyle (feature))
 
                 }
             },

@@ -1,4 +1,4 @@
-function getColor_streetlights(d) {
+function getColor_jobstatus(d) {
 switch  (d) {   case 1    :
                     return '#33a02c'    
                 case 2    :
@@ -7,15 +7,16 @@ switch  (d) {   case 1    :
                     return '#e31a1c'    
             }
 }
-function streetlightingStyle (feature) {
+function jobstatusStyle (feature) {
 return {
     color: '#000',
     weight: 2,
     opacity: 1,
-    fillColor: getColor_streetlights(feature.properties.raise_new_job),
+    fillColor: getColor_jobstatus(feature.properties.raise_new_job),
     fillOpacity: 0.5
     }
 }
+
 export {
-streetlightingStyle
+jobstatusStyle
 }
