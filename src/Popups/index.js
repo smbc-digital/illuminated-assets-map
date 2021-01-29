@@ -60,6 +60,40 @@ const getcontent_streetlights = feature => {
   }
 }
 
+const illuminatedbollardsPopup = (feature, layer) => {
+  const content = `<div class="item"><i class="fa fa-list" aria-hidden="true"></i><p class="title">Illuminated Bollards</p>
+    <p></p>
+    <p class="info">Location: ${feature.properties.location_description}</p>
+    <p class="info">Number on street light: ${feature.properties.feature_id}</p>
+    <p class="info">Central Asset ID: ${feature.properties.central_asset_id}</p>
+    <p class="info">Site Code: ${feature.properties.site_code}</p>
+    <p class="info">Job entry date: ${feature.properties.job_entry_date}</p>
+    <p class="info">Logged date: ${feature.properties.logged_date}</p>
+    <p class="info">Ext sytem ref: ${feature.properties.ext_system_ref}</p>
+    <p class="info">Message: ${feature.properties.message}</p>
+    <p></p>
+    </div>`
+  layer.bindPopup(content)
+}
+
+const illuminatedsignsPopup = (feature, layer) => {
+  const content = `<div class="item"><i class="fa fa-list" aria-hidden="true"></i><p class="title">Illuminated Bollards</p>
+    <p></p>
+    <p class="info">Location: ${feature.properties.location_description}</p>
+    <p class="info">Number on street light: ${feature.properties.feature_id}</p>
+    <p class="info">Central Asset ID: ${feature.properties.central_asset_id}</p>
+    <p class="info">Site Code: ${feature.properties.site_code}</p>
+    <p class="info">Job entry date: ${feature.properties.job_entry_date}</p>
+    <p class="info">Logged date: ${feature.properties.logged_date}</p>
+    <p class="info">Ext sytem ref: ${feature.properties.ext_system_ref}</p>
+    <p class="info">Message: ${feature.properties.message}</p>
+    <p></p>
+    </div>`
+  layer.bindPopup(content)
+}
+
 export {
-  streetLightingPopup 
+  streetLightingPopup,
+  illuminatedbollardsPopup,
+  illuminatedsignsPopup 
 }
